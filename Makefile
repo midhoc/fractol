@@ -25,7 +25,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 all: $(NAME)
 
@@ -35,7 +35,7 @@ $(NAME): $(LIBFT) $(OBJ) $(HEADER)
 obj:
 	mkdir -p obj
 
-obj/%.o: src/%.c $(LIBFT) | obj
+obj/%.o: src/%.c $(LIBFT) $(HEADER)| obj
 	$(CC) $(FLAGS) -c $< -o $@ $(INCLUDE_PATH) $(HEADER_MLX)
 
 

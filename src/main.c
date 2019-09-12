@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midounhocine <midounhocine@student.42.f    +#+  +:+       +#+        */
+/*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:09:15 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/08/27 15:04:59 by midounhocin      ###   ########.fr       */
+/*   Updated: 2019/09/12 17:31:19 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,35 @@ void	initialize_mlx(t_fractol_info *fractol)
 
 void	initialize_fractol(t_fractol_info *fractol)
 {
-	ft_bzero(fractol, sizeof(fractol));
+	ft_bzero(fractol, sizeof(t_fractol_info));
+	//fractol->fract = (t_info *)malloc(sizeof(t_info) * X_IMG *Y_IMG);
 	fractol->zoom = 1;
 	fractol->amp = 2;
 }
 
-int			main(void)
+void	check_ag(int argc, char **argv, t_fractol_info *fractol)
+{
+	if (argc != 2)
+		ft_error(ARGS_ERROR);
+	if (ft_strcmp(argv[1], "julia") == 0)
+		fractol->fun_ptr = j;
+	else if (ft_strcmp(argv[1], "mandelbrot") == 0)
+		fractol->fun_ptr = m;
+	else
+		ft_error(OPTION_ERROR);
+}
+
+int			main(int argc, char **argv)
 {
 	t_fractol_info	fractol;
-    
-	
+
 	initialize_fractol(&fractol);
+	check_ag(argc, argv, &fractol);
 	initialize_mlx(&fractol);
-	instruction(&fractol);
-	m(&fractol);
-	mlx_put_image_to_window(fractol.mlx_ptr, fractol.win_ptr,fractol.img_ptr, X_INSTR, 0);
+//	instruction(&fractol);
+	fractol.fun_ptr(&fractol);
+	if (fractol.fun_ptr == j)
+		mlx_hook(fractol.win_ptr, 6, 0, mouse_move, &fractol);
 	mlx_hook(fractol.win_ptr, 17, 0, ft_exit, &fractol);
 	mlx_loop(fractol.mlx_ptr);
 	exit(0);

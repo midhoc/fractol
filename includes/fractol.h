@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midounhocine <midounhocine@student.42.f    +#+  +:+       +#+        */
+/*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/08/26 23:14:29 by midounhocin      ###   ########.fr       */
+/*   Updated: 2019/09/12 17:33:24 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 
 # define SUCCESS			1
 # define FAIL				0
-# define X_SCREEN			(4 * 250)
-# define Y_SCREEN			(3 * 250)
-# define X_INSTR			250
+# define X_SCREEN			(2 * 300)
+# define Y_SCREEN			(2 * 300)
+# define X_INSTR			300
 # define Y_IMG				Y_SCREEN
-# define X_IMG				(X_SCREEN - X_INSTR)
+# define X_IMG				(X_SCREEN) //- X_INSTR)
 # define SIZE_IMG			4 * ((Y_IMG) * X_IMG)
 # define KEY_PRESS			2
 # define KEY_RELEASE		3
@@ -54,6 +54,7 @@
 # define MLX_ERROR			4
 # define MALLOC_ERROR		5
 # define CLOSE_FILE_ERROR	6
+# define OPTION_ERROR		7
 
 typedef struct	s_info
 {
@@ -64,13 +65,13 @@ typedef struct	s_info
 
 typedef struct	s_fractol_info
 {
-	int		x_offset;
-	int		y_offset;
+	double	ac;
+	double	bc;
 	int		zoom;
-	int	amp;
-	int	step;
-	
-	t_info	fract[Y_IMG][X_IMG];
+	int		amp;
+	//int		step;
+	void	(*fun_ptr)(struct s_fractol_info *);
+	//t_info	*fract;
 
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -78,9 +79,10 @@ typedef struct	s_fractol_info
 	char	*img_string;
 }				t_fractol_info;
 
-int	ft_exit(t_fractol_info *fractol);
-int	ft_error(int type);
+int		ft_exit(t_fractol_info *fractol);
+int		ft_error(int type);
 
+void	check_ag(int argc, char **argv, t_fractol_info *fractol);
 void	initialize_mlx(t_fractol_info *fractol);
 void	initialize_fractol(t_fractol_info *fractol);
 
@@ -93,11 +95,13 @@ void	draw_line(t_info p1, t_info p2, t_fractol_info *fractol);
 void	pixel_in_img(char *image_string, int x, int y, int color);
 void	reset_img(char *image_string);
 
-void    m(t_fractol_info *fractol);
-void    j(t_fractol_info *fractol);
+void	m(t_fractol_info *fractol);
+void	j(t_fractol_info *fractol);
+
+int		mouse_move(int x, int y, void *param);
 
 int		get_light(int start, int end, double percentage);
 int		get_color(int start, int end, double percentage);
-int     rainbow(double percentage);
+int		rainbow(double percentage);
 
 #endif
