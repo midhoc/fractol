@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 19:01:23 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/13 13:22:44 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 14:49:17 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,45 +39,7 @@ int		rainbow(double percentage)
 		b =255;
 		g = 255 - dr;
 	}
-    // else if(d == 4)
-    // {
-    //     b =255;
-    //     r = dr;
-    // }
-    // else if(d == 5)
-    // {
-    //     b =255 - dr;
-    //     r = 255;
-    // }
-    // while(i > 0){
-    // if ( r >= 255 && g < 255 && b <= 0 )
-    //   {
-    //   g+=10;
-    //   }
-    // if ( g >= 255 && r > 0 && b <= 0 )
-    //   {
-    //   r-=10;
-    //   if(r<0) r=0;
-    //   }
-    // if ( g >= 255 && b < 255 && r <= 0 )
-    //   {
-    //   b+=10;
-    //   }
-    // if ( b >= 255 && g > 0 && r <= 0 )
-    //   {
-    //   g-=10;
-    //   }
-    // if ( b >= 255 && r < 255 && g <= 0 )
-    //   {
-    //   r+=10;
-    //   }
-    // if ( r >= 255 && b > 0 && g <= 0 )
-    //   {
-    //   b-=10;
-    //   }
-    //   i-=10;
-    // }
-    return ((r << 16) | (g << 8) | b);
+	return ((r << 16) | (g << 8) | b);
 }
 
 
@@ -101,12 +63,10 @@ int				get_color(int start, int end, double percentage)
 }
 
 
-static int  nbr_itr(int i, int j, t_fractol_info *fractol)
+static	int	nbr_itr(int i, int j, t_fractol_info *fractol)
 {
 	double x;
 	double y;
-	// double a;
-	// double b;
 	double aa;
 	double bb;
 	int n;
@@ -136,14 +96,6 @@ void	m(t_fractol_info *fractol)
 	int	n;
 
 	i = -1;
-	// zoom(fractol, X_IMG / 2, Y_IMG / 2, 0);
-	// zoom(fractol, X_IMG / 4, Y_IMG / 4, 0);
-	// zoom(fractol, X_IMG / 2, Y_IMG / 2, 1);
-	// zoom(fractol, X_IMG / 2, Y_IMG / 2);
-	// zoom(fractol, X_IMG * 0.9, Y_IMG / 2);
-	// zoom(fractol, X_IMG * 0.9, Y_IMG / 2);
-	// 	zoom(fractol, X_IMG / 2, Y_IMG / 2);
-	// zoom(fractol, X_IMG / 2, Y_IMG / 2);
 	while (++i < X_IMG)
 	{
 		j = -1;

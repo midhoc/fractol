@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/13 13:02:32 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 14:34:33 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define KEY_RELEASE		3
 # define BLACK 				0x000000
 # define WHITE 				0xFFFFFF
+# define SCROLL_UP			4
+# define SCROLL_DOWN		5
 # define ARROW_UP			126
 # define ARROW_DOWN			125
 # define ARROW_LEFT			123
@@ -69,7 +71,7 @@ typedef struct	s_fractol_info
 	double	y_offset;
 	double	ac;
 	double	bc;
-	int		zoom;
+	//int		zoom;
 	double	amp;
 	//int		step;
 	void	(*fun_ptr)(struct s_fractol_info *);
@@ -103,6 +105,7 @@ void	j(t_fractol_info *fractol);
 int		mouse_move(int x, int y, void *param);
 void	zoom(t_fractol_info *fractol, int x, int y, int in_out);
 int		key_press(int keycode, t_fractol_info *fractol);
+void	reset_param(t_fractol_info *fractol);
 
 int		get_light(int start, int end, double percentage);
 int		get_color(int start, int end, double percentage);

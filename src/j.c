@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 21:46:08 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/13 13:20:46 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 14:23:05 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,27 @@ int		mouse_move(int x, int y, void *param)
 	return (1);
 }
 
+int 	key_press(int keycode, t_fractol_info *fractol)
+{
+	if (keycode == ARROW_UP)
+		fractol->y_offset -= fractol->amp /10;
+	else if (keycode == ARROW_DOWN)
+		fractol->y_offset += fractol->amp /10;
+	else if (keycode == ARROW_LEFT)
+		fractol->x_offset -= fractol->amp /10;
+	else if (keycode == ARROW_RIGHT)
+		fractol->x_offset += fractol->amp /10;
+	else if (keycode == MAIN_PAD_SPACE)
+		reset_param(fractol);
+	else if (keycode == NUMBER_PAD_PLUS)
+		zoom(fractol, X_IMG / 2, Y_IMG /2, 1);
+	else if (keycode == NUMBER_PAD_MINUS)
+		zoom(fractol, X_IMG / 2, Y_IMG /2, 0);
+	else if (keycode == MAIN_PAD_ESC)
+		exit(0);
+	fractol->fun_ptr(fractol);
+	return(0);
+}
 void	zoom(t_fractol_info *fractol, int x, int y, int in_out)
 {
 	if (!in_out)
