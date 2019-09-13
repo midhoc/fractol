@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 21:46:08 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/12 18:22:42 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 13:20:46 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static	int	nbr_itr(int i, int j, t_fractol_info *fractol, double ac, double bc)
 		int n;
 
 		n = 100;
-		a = ((double)i - 0) / (X_IMG) * (2 * fractol->amp) + (-fractol->amp);
-		b = ((double)j - 0) / (Y_IMG) * (2 * fractol->amp) + (-fractol->amp);
+		a = ((double)i - 0) / (X_IMG) * (fractol->amp) - fractol->x_offset;
+		b = ((double)j - 0) / (Y_IMG) * (fractol->amp) - fractol->y_offset;
 		while (--n > 0)
 		{
 
 			aa = a * a - b * b+ ac;
 			bb = 2 * a * b + bc;
-			if (fabs(aa * aa + bb * bb) > 16)
+			if (fabs(aa * aa + bb * bb) > 4)
 				return(n);
 			a = aa;
 			b = bb;
@@ -66,9 +66,25 @@ int		mouse_move(int x, int y, void *param)
 	t_fractol_info	*fractol;
 
 	fractol = (t_fractol_info *)param;
-	fractol->ac = ((double)x - 0) / (X_IMG) * (2 * fractol->amp) + (-fractol->amp);
-	fractol->bc = ((double)y - 0) / (Y_IMG) * (2 * fractol->amp) + (-fractol->amp);
+	fractol->ac = ((double)x - 0) / (X_IMG) * (fractol->amp) - fractol->x_offset;
+	fractol->bc = ((double)y - 0) / (Y_IMG) * (fractol->amp) - fractol->y_offset;
 	j(fractol);
 	return (1);
 }
 
+void	zoom(t_fractol_info *fractol, int x, int y, int in_out)
+{
+	if (!in_out)
+	{
+		fractol->x_offset += x * fractol->amp / X_IMG;
+		fractol->y_offset += y * fractol->amp / Y_IMG;
+		fractol->amp *= 2;
+	}
+	else
+	{
+		fractol->x_offset -= 0.5 * x * fractol->amp / X_IMG;
+		fractol->y_offset -= 0.5 * y * fractol->amp / Y_IMG;
+		fractol->amp /= 2;
+	}
+
+}

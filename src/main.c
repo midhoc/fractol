@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:09:15 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/12 17:31:19 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 13:14:55 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ void	initialize_mlx(t_fractol_info *fractol)
 void	initialize_fractol(t_fractol_info *fractol)
 {
 	ft_bzero(fractol, sizeof(t_fractol_info));
-	//fractol->fract = (t_info *)malloc(sizeof(t_info) * X_IMG *Y_IMG);
 	fractol->zoom = 1;
-	fractol->amp = 2;
+	fractol->amp = 4;
+	fractol->x_offset = fractol->amp/2;
+	fractol->y_offset = fractol->amp/2;
 }
 
 void	check_ag(int argc, char **argv, t_fractol_info *fractol)
@@ -51,6 +52,16 @@ void	check_ag(int argc, char **argv, t_fractol_info *fractol)
 		ft_error(OPTION_ERROR);
 }
 
+int mouse_press(int button, int x, int y, t_fractol_info *fractol)
+{
+	if (button == 4)
+		zoom(fractol,x, y, 0);
+	else if (button == 5)
+		zoom(fractol,x, y, 1);
+	fractol->fun_ptr(fractol);
+	return (0);
+}
+
 int			main(int argc, char **argv)
 {
 	t_fractol_info	fractol;
@@ -58,10 +69,10 @@ int			main(int argc, char **argv)
 	initialize_fractol(&fractol);
 	check_ag(argc, argv, &fractol);
 	initialize_mlx(&fractol);
-//	instruction(&fractol);
 	fractol.fun_ptr(&fractol);
 	if (fractol.fun_ptr == j)
 		mlx_hook(fractol.win_ptr, 6, 0, mouse_move, &fractol);
+	mlx_hook(fractol.win_ptr, 4, 0, mouse_press, &fractol);
 	mlx_hook(fractol.win_ptr, 17, 0, ft_exit, &fractol);
 	mlx_loop(fractol.mlx_ptr);
 	exit(0);

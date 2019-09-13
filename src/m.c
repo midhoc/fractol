@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 19:01:23 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/12 17:43:21 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 13:22:44 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,26 +105,26 @@ static int  nbr_itr(int i, int j, t_fractol_info *fractol)
 {
 	double x;
 	double y;
-	double a;
-	double b;
+	// double a;
+	// double b;
 	double aa;
 	double bb;
 	int n;
 
-	a = 0;
-	b = 0;
+	fractol->ac = 0;
+	fractol->bc = 0;
 	n = 100;
-	x = ((double)i - 0) / (X_IMG) * (2 * fractol->amp) + (-fractol->amp);
-	y = ((double)j - 0) / (Y_IMG) * (2 * fractol->amp) + (-fractol->amp);
+	x = ((double)i - 0) / (X_IMG) * (fractol->amp) - fractol->x_offset;
+	y = ((double)j - 0) / (Y_IMG) * (fractol->amp) - fractol->y_offset;
 	while (--n > 0)
 	{
 
-		aa = a * a - b * b+ x;
-		bb = 2 * a * b + y;
-		if (fabs(aa * aa + bb * bb) > 16)
+		aa =fractol->ac*fractol->ac- fractol->bc * fractol->bc + x;
+		bb = 2 *fractol->ac* fractol->bc + y;
+		if (fabs(aa * aa + bb * bb) > 4)
 			return(n);
-		a = aa;
-		b = bb;
+		fractol->ac = aa;
+		fractol->bc = bb;
 	}
 	return (n);
 }
@@ -136,6 +136,14 @@ void	m(t_fractol_info *fractol)
 	int	n;
 
 	i = -1;
+	// zoom(fractol, X_IMG / 2, Y_IMG / 2, 0);
+	// zoom(fractol, X_IMG / 4, Y_IMG / 4, 0);
+	// zoom(fractol, X_IMG / 2, Y_IMG / 2, 1);
+	// zoom(fractol, X_IMG / 2, Y_IMG / 2);
+	// zoom(fractol, X_IMG * 0.9, Y_IMG / 2);
+	// zoom(fractol, X_IMG * 0.9, Y_IMG / 2);
+	// 	zoom(fractol, X_IMG / 2, Y_IMG / 2);
+	// zoom(fractol, X_IMG / 2, Y_IMG / 2);
 	while (++i < X_IMG)
 	{
 		j = -1;

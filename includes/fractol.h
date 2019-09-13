@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/12 17:33:24 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 13:02:32 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ typedef struct	s_info
 
 typedef struct	s_fractol_info
 {
+	double	x_offset;
+	double	y_offset;
 	double	ac;
 	double	bc;
 	int		zoom;
-	int		amp;
+	double	amp;
 	//int		step;
 	void	(*fun_ptr)(struct s_fractol_info *);
 	//t_info	*fract;
@@ -99,6 +101,8 @@ void	m(t_fractol_info *fractol);
 void	j(t_fractol_info *fractol);
 
 int		mouse_move(int x, int y, void *param);
+void	zoom(t_fractol_info *fractol, int x, int y, int in_out);
+int		key_press(int keycode, t_fractol_info *fractol);
 
 int		get_light(int start, int end, double percentage);
 int		get_color(int start, int end, double percentage);
