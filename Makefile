@@ -11,7 +11,7 @@ SRC =	main.c \
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 
 HEADER = ./includes/fractol.h \
-		 ./libft/includes/libft.h
+		 		./libft/includes/libft.h
 
 INCLUDE_PATH = -I ./includes -I ./libft/includes
 
@@ -25,7 +25,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
