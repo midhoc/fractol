@@ -4,9 +4,7 @@ SRC =	main.c \
 		exit.c \
 		draw_line.c \
 		pixel_in_img.c \
-		mand.c \
-		julia.c \
-		mand3.c \
+		fractal.c \
 		mouse.c \
 		color.c
 
