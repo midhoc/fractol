@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/15 19:22:04 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:40:20 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct	s_fractol_info
 	double	amp;
 	int		color_type;
 	int		on_j_mouse;
-	void	(*fun_ptr)(struct s_fractol_info *);
+	int		(*fun_ptr)(int, int, struct s_fractol_info *);
 
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -97,9 +97,10 @@ void	draw_line(t_info p1, t_info p2, t_fractol_info *fractol);
 void	pixel_in_img(char *image_string, int x, int y, int color);
 void	reset_img(char *image_string);
 
-void	mand(t_fractol_info *fractol);
-void	julia(t_fractol_info *fractol);
-void	mand3(t_fractol_info *fractol);
+int		mand(int i, int j, t_fractol_info *fractol);
+int		julia(int i, int j, t_fractol_info *fractol);
+int		mand3(int i, int j, t_fractol_info *fractol);
+void	draw(t_fractol_info *fractol);
 
 int		mouse_move(int x, int y, t_fractol_info *fractol);
 int		mouse_press(int button, int x, int y, t_fractol_info *fractol);

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:09:15 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/15 19:29:13 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:40:36 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				main(int argc, char **argv)
 	initialize_fractol(&fractol);
 	check_ag(argc, argv, &fractol);
 	initialize_mlx(&fractol);
-	fractol.fun_ptr(&fractol);
+	draw(&fractol);
 	mlx_hook(fractol.win_ptr, 6, 0, mouse_move, &fractol);
 	mlx_hook(fractol.win_ptr, 4, 0, mouse_press, &fractol);
 	mlx_hook(fractol.win_ptr, 2, 0, key_press, &fractol);

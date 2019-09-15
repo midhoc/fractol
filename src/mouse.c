@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 22:26:39 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/15 19:33:33 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:42:42 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		mouse_press(int button, int x, int y, t_fractol_info *fractol)
 		fractol->on_j_mouse = !(fractol->on_j_mouse);
 	else if (button == 2)
 		fractol->color_type = !(fractol->color_type);
-	fractol->fun_ptr(fractol);
+	draw(fractol);
 	return (0);
 }
 
@@ -37,7 +37,7 @@ int		mouse_move(int x, int y, t_fractol_info *fractol)
 			fractol->bc = ((double)y - 0) / (Y_IMG) *
 						(fractol->amp) - fractol->y_offset;
 		}
-		julia(fractol);
+		draw(fractol);
 	}
 	return (1);
 }
@@ -62,7 +62,7 @@ int		key_press(int keycode, t_fractol_info *fractol)
 		change_fract(fractol, keycode);
 	else if (keycode == MAIN_PAD_ESC)
 		exit(0);
-	fractol->fun_ptr(fractol);
+	draw(fractol);
 	return (0);
 }
 

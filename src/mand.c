@@ -6,13 +6,13 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 19:01:23 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/13 23:30:20 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:43:02 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static	int		nbr_itr(int i, int j, t_fractol_info *fractol)
+int		mand(int i, int j, t_fractol_info *fractol)
 {
 	double	x;
 	double	y;
@@ -37,23 +37,23 @@ static	int		nbr_itr(int i, int j, t_fractol_info *fractol)
 	return (n);
 }
 
-void			mand(t_fractol_info *fractol)
-{
-	int	i;
-	int	j;
-	int	n;
+// void			mand(t_fractol_info *fractol)
+// {
+// 	int	i;
+// 	int	j;
+// 	int	n;
 
-	i = -1;
-	while (++i < X_IMG)
-	{
-		j = -1;
-		while (++j < Y_IMG)
-		{
-			n = nbr_itr(i, j, fractol);
-			pixel_in_img(fractol->img_string, i, j,
-							color((double)n / 100, fractol));
-		}
-	}
-	mlx_put_image_to_window(fractol->mlx_ptr,
-							fractol->win_ptr, fractol->img_ptr, 0, 0);
-}
+// 	i = -1;
+// 	while (++i < X_IMG)
+// 	{
+// 		j = -1;
+// 		while (++j < Y_IMG)
+// 		{
+// 			n = nbr_itr(i, j, fractol);
+// 			pixel_in_img(fractol->img_string, i, j,
+// 							color((double)n / 100, fractol));
+// 		}
+// 	}
+// 	mlx_put_image_to_window(fractol->mlx_ptr,
+// 							fractol->win_ptr, fractol->img_ptr, 0, 0);
+// }

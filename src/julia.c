@@ -6,13 +6,13 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 21:46:08 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/15 18:56:54 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:41:21 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static	int		nbr_itr(int i, int j, t_fractol_info *fractol)
+int		julia(int i, int j, t_fractol_info *fractol)
 {
 	double	a;
 	double	b;
@@ -35,7 +35,30 @@ static	int		nbr_itr(int i, int j, t_fractol_info *fractol)
 	return (n);
 }
 
-void			julia(t_fractol_info *fractol)
+// void			julia(t_fractol_info *fractol)
+// {
+// 	int i;
+// 	int j;
+// 	int n;
+
+// 	i = 0;
+// 	while (i < X_IMG)
+// 	{
+// 		j = 0;
+// 		while (j < Y_IMG)
+// 		{
+// 			n = nbr_itr(i, j, fractol);
+// 			pixel_in_img(fractol->img_string, i, j,
+// 							color((double)n / 100, fractol));
+// 			j += 1;
+// 		}
+// 		i += 1;
+// 	}
+// 	mlx_put_image_to_window(fractol->mlx_ptr,
+// 							fractol->win_ptr, fractol->img_ptr, 0, 0);
+// }
+
+void		draw(t_fractol_info *fractol)
 {
 	int i;
 	int j;
@@ -47,7 +70,7 @@ void			julia(t_fractol_info *fractol)
 		j = 0;
 		while (j < Y_IMG)
 		{
-			n = nbr_itr(i, j, fractol);
+			n = fractol->fun_ptr(i, j, fractol);
 			pixel_in_img(fractol->img_string, i, j,
 							color((double)n / 100, fractol));
 			j += 1;
