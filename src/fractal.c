@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:07:45 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/15 19:53:32 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 20:20:17 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		mand3(int i, int j, t_fractol_info *fractol)
 
 	fractol->ac = 0;
 	fractol->bc = 0;
-	n = 100;
+	n = fractol->max_itr;
 	x = ((double)i - 0) / (X_IMG) * (fractol->amp) - fractol->x_offset;
 	y = ((double)j - 0) / (Y_IMG) * (fractol->amp) - fractol->y_offset;
 	while (--n > 0)
@@ -45,7 +45,7 @@ int		julia(int i, int j, t_fractol_info *fractol)
 	double	bb;
 	int		n;
 
-	n = 100;
+	n = fractol->max_itr;
 	a = ((double)i - 0) / (X_IMG) * (fractol->amp) - fractol->x_offset;
 	b = ((double)j - 0) / (Y_IMG) * (fractol->amp) - fractol->y_offset;
 	while (--n > 0)
@@ -70,7 +70,7 @@ int		mand(int i, int j, t_fractol_info *fractol)
 
 	fractol->ac = 0;
 	fractol->bc = 0;
-	n = 100;
+	n = fractol->max_itr;
 	x = ((double)i - 0) / (X_IMG) * (fractol->amp) - fractol->x_offset;
 	y = ((double)j - 0) / (Y_IMG) * (fractol->amp) - fractol->y_offset;
 	while (--n > 0)
@@ -99,7 +99,7 @@ void		draw(t_fractol_info *fractol)
 		{
 			n = fractol->fun_ptr(i, j, fractol);
 			pixel_in_img(fractol->img_string, i, j,
-							color((double)n / 100, fractol));
+							color((double)n / fractol->max_itr, fractol));
 			j += 1;
 		}
 		i += 1;

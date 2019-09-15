@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 22:26:39 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/15 20:01:24 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 20:29:28 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int		key_press(int keycode, t_fractol_info *fractol)
 		zoom(fractol, X_IMG / 2, Y_IMG / 2, 0);
 	else if (keycode == PAD_1 || keycode == PAD_2 || keycode == PAD_3)
 		change_fract(fractol, keycode);
+	else if (keycode == PAD_6 || keycode == PAD_9 || keycode == PAD_8)
+		change_max_itr(fractol, keycode);
 	else if (keycode == MAIN_PAD_ESC)
 		exit(0);
 	draw(fractol);
@@ -98,4 +100,14 @@ void	change_fract(t_fractol_info *fractol, int opt)
 		fractol->fun_ptr = fun_ptr;
 		reset_param(fractol);
 	}
+}
+
+void	change_max_itr(t_fractol_info *fractol, int plus_m)
+{
+	if (plus_m == PAD_6 && fractol->max_itr > 30)
+		fractol->max_itr -= 10;
+	else if (plus_m == PAD_9 && fractol->max_itr < 150)
+		fractol->max_itr += 10;
+	else if (plus_m == PAD_8)
+		fractol->max_itr = 100;
 }

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:09:15 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/15 19:40:36 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 20:19:48 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void			reset_param(t_fractol_info *fractol)
 	fractol->y_offset = fractol->amp / 2;
 	fractol->on_j_mouse = 1;
 	fractol->color_type = 1;
+	fractol->max_itr = 100;
 }
 
 int				main(int argc, char **argv)

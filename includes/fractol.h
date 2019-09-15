@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/15 20:12:42 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 20:27:52 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define MAIN_PAD_SPACE		49
 # define MAIN_PAD_ESC		53
 # define PAD_9				92
+# define PAD_8				91
 # define PAD_6				88
 # define PAD_1				83
 # define PAD_2				84
@@ -73,6 +74,7 @@ typedef struct	s_fractol_info
 	double	ac;
 	double	bc;
 	double	amp;
+	int		max_itr;
 	int		color_type;
 	int		on_j_mouse;
 	int		(*fun_ptr)(int, int, struct s_fractol_info *);
@@ -106,6 +108,7 @@ void	zoom(t_fractol_info *fractol, int x, int y, int in_out);
 int		key_press(int keycode, t_fractol_info *fractol);
 void	reset_param(t_fractol_info *fractol);
 void	change_fract(t_fractol_info *fractol, int opt);
+void	change_max_itr(t_fractol_info *fractol, int plus_m);
 
 int		get_light(int start, int end, double percentage);
 int		b_w_color(double percentage);
