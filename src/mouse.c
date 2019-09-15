@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 22:26:39 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/15 19:20:22 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:33:33 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ void	change_fract(t_fractol_info *fractol, int opt)
 		fractol->fun_ptr = julia;
 	else if (opt == PAD_3)
 		fractol->fun_ptr = mand3;
+	reset_param(fractol);
 }
