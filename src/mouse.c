@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 22:26:39 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/15 19:42:42 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 20:01:24 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,18 @@ void	zoom(t_fractol_info *fractol, int x, int y, int in_out)
 
 void	change_fract(t_fractol_info *fractol, int opt)
 {
+	int		(*fun_ptr)(int, int, struct s_fractol_info *);
+
+	fun_ptr = NULL;
 	if (opt == PAD_1)
-		fractol->fun_ptr = mand;
+		fun_ptr = mand;
 	else if (opt == PAD_2)
-		fractol->fun_ptr = julia;
+		fun_ptr = julia;
 	else if (opt == PAD_3)
-		fractol->fun_ptr = mand3;
-	reset_param(fractol);
+		fun_ptr = mand3;
+	if (fun_ptr != fractol->fun_ptr)
+	{
+		fractol->fun_ptr = fun_ptr;
+		reset_param(fractol);
+	}
 }
