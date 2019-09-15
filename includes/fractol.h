@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/15 19:58:46 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 20:03:43 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define FAIL				0
 # define X_SCREEN			(2 * 300)
 # define Y_SCREEN			(2 * 300)
-# define X_INSTR			300
 # define Y_IMG				Y_SCREEN
 # define X_IMG				(X_SCREEN)
 # define SIZE_IMG			4 * ((Y_IMG) * X_IMG)
