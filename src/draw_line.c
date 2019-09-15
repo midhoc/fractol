@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midounhocine <midounhocine@student.42.f    +#+  +:+       +#+        */
+/*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 18:38:01 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/08/26 20:14:41 by midounhocin      ###   ########.fr       */
+/*   Updated: 2019/09/13 22:29:13 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 
 void	draw_line_x(t_info p1, t_info p2, t_fractol_info *fractol)
 {

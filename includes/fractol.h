@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/13 14:34:33 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/13 23:08:03 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,10 @@ typedef struct	s_fractol_info
 	double	y_offset;
 	double	ac;
 	double	bc;
-	//int		zoom;
 	double	amp;
-	//int		step;
+	int		color_type;
+	int		on_j_mouse;
 	void	(*fun_ptr)(struct s_fractol_info *);
-	//t_info	*fract;
 
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -86,10 +85,6 @@ typedef struct	s_fractol_info
 int		ft_exit(t_fractol_info *fractol);
 int		ft_error(int type);
 
-void	check_ag(int argc, char **argv, t_fractol_info *fractol);
-void	initialize_mlx(t_fractol_info *fractol);
-void	initialize_fractol(t_fractol_info *fractol);
-
 void	instruction(t_fractol_info *fractol);
 
 void	draw_line_x(t_info p1, t_info p2, t_fractol_info *fractol);
@@ -99,16 +94,20 @@ void	draw_line(t_info p1, t_info p2, t_fractol_info *fractol);
 void	pixel_in_img(char *image_string, int x, int y, int color);
 void	reset_img(char *image_string);
 
-void	m(t_fractol_info *fractol);
-void	j(t_fractol_info *fractol);
+void	mand(t_fractol_info *fractol);
+void	julia(t_fractol_info *fractol);
+void	fract_cos(t_fractol_info *fractol);
 
-int		mouse_move(int x, int y, void *param);
+int		mouse_move(int x, int y, t_fractol_info *fractol);
+int		mouse_press(int button, int x, int y, t_fractol_info *fractol);
 void	zoom(t_fractol_info *fractol, int x, int y, int in_out);
 int		key_press(int keycode, t_fractol_info *fractol);
 void	reset_param(t_fractol_info *fractol);
+void	change_fract(t_fractol_info *fractol);
 
 int		get_light(int start, int end, double percentage);
-int		get_color(int start, int end, double percentage);
+int		b_w_color(double percentage);
 int		rainbow(double percentage);
+int		color(double percentage, t_fractol_info *fractol);
 
 #endif

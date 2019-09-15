@@ -3,10 +3,12 @@ NAME = fractol
 SRC =	main.c \
 		exit.c \
 		draw_line.c \
-		instructions.c \
 		pixel_in_img.c \
-		m.c \
-		j.c
+		mand.c \
+		julia.c \
+		cos.c \
+		mouse.c \
+		color.c
 
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 
