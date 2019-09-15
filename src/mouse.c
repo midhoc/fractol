@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 22:26:39 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/13 23:28:11 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:20:22 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int		key_press(int keycode, t_fractol_info *fractol)
 		zoom(fractol, X_IMG / 2, Y_IMG / 2, 1);
 	else if (keycode == NUMBER_PAD_MINUS)
 		zoom(fractol, X_IMG / 2, Y_IMG / 2, 0);
-	else if (keycode == MAIN_PAD_A)
-		change_fract(fractol);
+	else if (keycode == PAD_1 || keycode == PAD_2 || keycode == PAD_3)
+		change_fract(fractol, keycode);
 	else if (keycode == MAIN_PAD_ESC)
 		exit(0);
 	fractol->fun_ptr(fractol);
@@ -82,12 +82,12 @@ void	zoom(t_fractol_info *fractol, int x, int y, int in_out)
 	}
 }
 
-void	change_fract(t_fractol_info *fractol)
+void	change_fract(t_fractol_info *fractol, int opt)
 {
-	if (fractol->fun_ptr == julia)
+	if (opt == PAD_1)
 		fractol->fun_ptr = mand;
-	else if (fractol->fun_ptr == mand)
-	// 	fractol->fun_ptr = fract_cos;
-	// else if (fractol->fun_ptr == fract_cos)
+	else if (opt == PAD_2)
 		fractol->fun_ptr = julia;
+	else if (opt == PAD_3)
+		fractol->fun_ptr = mand3;
 }

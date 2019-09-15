@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cos.c                                              :+:      :+:    :+:   */
+/*   mand3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:07:45 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/14 12:55:43 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:20:24 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ static	int		nbr_itr(int i, int j, t_fractol_info *fractol)
 	y = ((double)j - 0) / (Y_IMG) * (fractol->amp) - fractol->y_offset;
 	while (--n > 0)
 	{
-		aa = pow(fractol->ac, 4) + pow(fractol->bc, 4) - 6 * pow(fractol->ac, 2) * pow(fractol->bc, 2) + x;
-		bb = 4 * pow(fractol->ac, 3) * fractol->bc - 4 * pow(fractol->bc, 3) * fractol->ac + y;
-		// aa = pow(fractol->ac, 3) - 3 * fractol->ac * pow(fractol->bc, 2) + x;
-		// bb = 3 * fractol->bc * pow(fractol->ac, 2) - pow(fractol->bc, 3) + y;
+		aa = fractol->ac * fractol->ac * fractol->ac - 3 * fractol->ac * fractol->bc * fractol->bc + x;
+		bb = 3 * fractol->bc * fractol->ac * fractol->ac- fractol->bc * fractol->bc * fractol->bc + y;
 		if (fabs(aa * aa + bb * bb) > 4)
 			return (n);
 		fractol->ac = aa;
@@ -39,7 +37,7 @@ static	int		nbr_itr(int i, int j, t_fractol_info *fractol)
 	return (n);
 }
 
-void			fract_cos(t_fractol_info *fractol)
+void			mand3(t_fractol_info *fractol)
 {
 	int	i;
 	int	j;

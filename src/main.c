@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:09:15 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/13 23:25:11 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:29:13 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static	void	check_ag(int argc, char **argv, t_fractol_info *fractol)
 		fractol->fun_ptr = julia;
 	else if (ft_strcmp(argv[1], "mandelbrot") == 0)
 		fractol->fun_ptr = mand;
-	else if (ft_strcmp(argv[1], "cos") == 0)
-		fractol->fun_ptr = fract_cos;
+	else if (ft_strcmp(argv[1], "mandelbrot_3") == 0)
+		fractol->fun_ptr = mand3;
 	else
-		ft_error(OPTION_ERROR);
+		ft_error(ARGS_ERROR);
 }
 
 void			reset_param(t_fractol_info *fractol)

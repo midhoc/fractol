@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 22:00:41 by midounhocin       #+#    #+#             */
-/*   Updated: 2019/09/13 23:08:03 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/15 19:22:04 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define Y_SCREEN			(2 * 300)
 # define X_INSTR			300
 # define Y_IMG				Y_SCREEN
-# define X_IMG				(X_SCREEN) //- X_INSTR)
+# define X_IMG				(X_SCREEN)
 # define SIZE_IMG			4 * ((Y_IMG) * X_IMG)
 # define KEY_PRESS			2
 # define KEY_RELEASE		3
@@ -50,6 +50,9 @@
 # define MAIN_PAD_ESC		53
 # define PAD_9				92
 # define PAD_6				88
+# define PAD_1				83
+# define PAD_2				84
+# define PAD_3				85
 # define ARGS_ERROR			1
 # define INVALID_MAP		2
 # define FILE_ERROR			3
@@ -96,14 +99,14 @@ void	reset_img(char *image_string);
 
 void	mand(t_fractol_info *fractol);
 void	julia(t_fractol_info *fractol);
-void	fract_cos(t_fractol_info *fractol);
+void	mand3(t_fractol_info *fractol);
 
 int		mouse_move(int x, int y, t_fractol_info *fractol);
 int		mouse_press(int button, int x, int y, t_fractol_info *fractol);
 void	zoom(t_fractol_info *fractol, int x, int y, int in_out);
 int		key_press(int keycode, t_fractol_info *fractol);
 void	reset_param(t_fractol_info *fractol);
-void	change_fract(t_fractol_info *fractol);
+void	change_fract(t_fractol_info *fractol, int opt);
 
 int		get_light(int start, int end, double percentage);
 int		b_w_color(double percentage);

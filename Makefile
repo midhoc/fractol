@@ -6,7 +6,7 @@ SRC =	main.c \
 		pixel_in_img.c \
 		mand.c \
 		julia.c \
-		cos.c \
+		mand3.c \
 		mouse.c \
 		color.c
 
